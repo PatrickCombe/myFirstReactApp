@@ -22,10 +22,19 @@ componentDidMount(){
 
   }
 
+  addTodo(task){
+console.log(task)
+dummyData.push({taskText: task, completed: false});
+console.log(dummyData);
+this.setState({
+  todos: dummyData
+})
+  }
+
   render(){
     return(
       <div>
-        <InputLine  />
+      <InputLine submit={(task) => this.addTodo(task)}  />
       <TodoList todos={this.state.todos} />
     </div>
   )

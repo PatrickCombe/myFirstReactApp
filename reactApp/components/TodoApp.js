@@ -22,10 +22,31 @@ componentDidMount(){
 
   }
 
+  removeTodo(index){
+
+    dummyData.splice(index,1);
+    this.setState({
+      todos: dummyData
+    })
+  }
+
+toggle(index){
+
+if(dummyData[index].completed===true){
+    dummyData[index].completed=false;
+} else {
+  dummyData[index].completed=true;
+}
+
+  this.setState({
+    todos: dummyData
+  })
+
+}
   addTodo(task){
-console.log(task)
+
 dummyData.push({taskText: task, completed: false});
-console.log(dummyData);
+//console.log(dummyData);
 this.setState({
   todos: dummyData
 })
@@ -35,7 +56,7 @@ this.setState({
     return(
       <div>
       <InputLine submit={(task) => this.addTodo(task)}  />
-      <TodoList todos={this.state.todos} />
+      <TodoList todos={this.state.todos} todoXClick={(index) => this.removeTodo(index)} toggle={(index) => this.toggle(index)}/>
     </div>
   )
 

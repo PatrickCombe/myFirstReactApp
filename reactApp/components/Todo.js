@@ -4,7 +4,7 @@ import React from 'react';
 
 function Todo(props){
 
-return  (<li><button>X</button> {props.task.completed ? <strike> {props.task.taskText} </strike> : props.task.taskText  } </li>)
+return  (<li onClick= {(e) => (props.toggle(e))} ><button onClick= {(e) => (props.xClick(e))} >X</button> {props.task.completed ? <strike  > {props.task.taskText} </strike> : props.task.taskText  } </li>)
 
 
 
